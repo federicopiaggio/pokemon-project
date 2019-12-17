@@ -1,0 +1,15 @@
+
+.pokemon img{
+    width: 150px;
+}
+
+.trainer img{
+    transform: scaleX(-1);
+}
+
+
+.battleCamp{
+    margin: auto;
+    width: 100%;
+
+}
