@@ -1,4 +1,4 @@
-class attack{
+class Attack {
     constructor(name, damage, quantities, type){
         this.name = name;
         this.damage = damage;

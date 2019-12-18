@@ -1,4 +1,4 @@
-class pokemon{
+class Pokemon{
     constructor(name, life, type, level, attacks, defense){
         this.name = name;
         this.life = life;

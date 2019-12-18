@@ -1,9 +1,9 @@
-class entrenadores {
+class Trainer {
     constructor(name = ""){
         this.name = name;
     }
 
-    attack(attacks){
+    attack(attack){
 
     }
 
