@@ -20,12 +20,15 @@ var waterGun = new Attack ("Water Gun", 40, 20, "Water");
 var charmander = new Pokemon ("Charmander", 45, "Fire" , 1, [ember, scratch,flamethrower,fireSpin], 50);
 var squirtle = new Pokemon ("Squirtle", 40, "Water" , 1, [bubble,rainSplash,waterGun,tackle], 70);
 var bulbasaur = new Pokemon ("Bulbasaur", 40 , "Plant", 1, [vineWhip,tackle,razorLeaf,solarBeam], 80);
-var trainer = new Trainer("Jugador");
-var enemy = new Trainer ("Enemigo");
+
+var playerPoke = charmander;
+var enemyPoke = squirtle;
 
 
-var player = charmander;
-var enemy = squirtle;
+playerPoke.attack(enemyPoke, 100);
+
+enemyPoke.attack(playerPoke, 100);
+
 
 
 

@@ -8,6 +8,10 @@ class Pokemon{
         this.defense = defense;
     }
 
+    attack(enemy, damage){
+        damage -= enemy.defense;
+        enemy.life -= damage;
+    }
 
 }
 

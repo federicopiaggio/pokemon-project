@@ -9,24 +9,36 @@
     <link rel="stylesheet" href="css/juego.css">
     <script src="js/attack.js"></script>
     <script src="js/pokemon.js"></script>
-    <script src= "js/aplication.js"></script>
-    <script src="js/trainer.js"></script>
+    <script src="js/aplication.js"></script>
     <script src="js/drawer.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="battleCamp">
-        
-        <div class="pokemon enemy" id ="idPokemon1">
-            Squirtle
-            <img src="./sprites/Squirtle.png" alt="">
-        </div>
-        <div class="pokemon trainer" id ="idPokemon2">
-            Charmander
-            <img src="./sprites/Charmander.png" alt="">
-        </div>
+        <div class="battleCamp-card">
 
+
+            <div class="pokemon trainer" id="idPokemon2">
+
+                <img src="./sprites/Charmander.png" alt="">
+
+                <div class="fondo-nombre">
+                    <h2 class="pokemon-trainer" id="pokemon-trainer">Charmander</h2>
+                </div>
+            </div>
+
+            <div class="pokemon enemy" id="idPokemon1">
+
+                <img src="./sprites/Squirtle.png" alt="">
+
+                <div class="fondo-nombre">
+                    <h2 class="pokemon-enemy" id="pokemon-enemy">Squirtle</h2>
+                </div>
+            </div>
+
+        </div>
     </div>
 </body>
 
