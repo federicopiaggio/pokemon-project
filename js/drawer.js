@@ -45,14 +45,26 @@ var objPoke = {
         "attacks" : [vineWhip,tackle,razorLeaf,solarBeam],
         "defense" : 75,
     },
+}
+
+function GetRandomInt(min,max){
+    min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; 
+} 
+
+var enemyPoke, playerPoke;
+
+function selector(player = 0){
+let e = GetRandomInt(0,2);
+enemyPoke = new Pokemon (objPoke[e].name,objPoke[e].life,objPoke[e].type,objPoke[e].level,objPoke[e].attacks,objPoke[e].defense);
+playerPoke = new Pokemon (objPoke[player].name,objPoke[player].life,objPoke[player].type,objPoke[player].level,objPoke[player].attacks,objPoke[player].defense);
 
 }
 
+selector(1)
 
-
-
-var playerPoke = new Pokemon (objPoke[0].name,objPoke[0].life,objPoke[0].type,objPoke[0].level,objPoke[0].attacks,objPoke[0].defense);
-var enemyPoke = new Pokemon (objPoke[1].name,objPoke[1].life,objPoke[1].type,objPoke[1].level,objPoke[1].attacks,objPoke[1].defense);
+console.log(playerPoke,enemyPoke);
 
 
 var attack1 = playerPoke.attack(enemyPoke, playerPoke.attacks[0].damage);
