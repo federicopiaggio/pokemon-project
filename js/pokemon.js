@@ -13,11 +13,7 @@ class Pokemon{
         enemy.life -= damage;
         console.log("PlayerPoke ha atacado");
         console.log("el daño es" + damage);
-        console.log("La vida de EnemyPoke es" + enemyPoke.life);
-        if(damage> enemy.life){
-            console.log("PlayerPoke ha ganado");
-            return false;
-        }
+        console.log("La vida de EnemyPoke es" + gameStates.enemyPoke.life);
     }
 
 }
