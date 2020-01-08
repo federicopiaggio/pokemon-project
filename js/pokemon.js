@@ -11,13 +11,6 @@ class Pokemon{
     attack(enemy, damage){
         damage -= enemy.defense;
         enemy.life -= damage;
-        console.log("PlayerPoke ha atacado");
-        console.log("el daño es" + damage);
-        console.log("La vida de EnemyPoke es" + enemyPoke.life);
-        if(damage> enemy.life){
-            console.log("PlayerPoke ha ganado");
-            return false;
-        }
     }
 
 }

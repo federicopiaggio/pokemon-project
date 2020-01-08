@@ -19,7 +19,7 @@ body{
     width: 600px;
     height: 400px;
     background-color: #eaeaea;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     color: black;
     margin: 100px auto;
 }
@@ -39,4 +39,23 @@ body{
     flex: 1 auto;
     width: 90px;
     margin-top: 190px;
+}
+
+.joystick{
+    width: 600px;
+    margin: 0 auto;
+}
+
+.botonesCrad{
+    display: flex;
+    justify-content: space-around;
+}
+
+.btnA{
+    flex: 1 auto;
+    width: 100px;
+    height: 100px;
+    margin: 0 20px;
+    border-radius: 100%;
+    background-color: white;
 }
