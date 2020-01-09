@@ -59,3 +59,32 @@ body{
     border-radius: 100%;
     background-color: white;
 }
+
+
+/* ACA ARRANCA EL CSS ESPECIFICO DEL INDEX.HTML  */
+
+.main-title{
+    margin: auto;
+    width: 40%;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-title img{
+    width: 100%;
+}
+
+
+.selector{
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 40px;
+}

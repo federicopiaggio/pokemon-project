@@ -20,14 +20,7 @@ var rainSplash = new Attack ("Rain Splash", 110, 25, "Water");
 var waterGun = new Attack ("Water Gun", 115, 20, "Water");
 
 
-var charmander = new Pokemon ("Charmander", 45, "Fire" , 1, [ember, scratch,flamethrower,fireSpin], 50);
-var squirtle = new Pokemon ("Squirtle", 40, "Water" , 1, [bubble,rainSplash,waterGun,tackle], 70);
-var bulbasaur = new Pokemon ("Bulbasaur", 40 , "Plant", 1, [vineWhip,tackle,razorLeaf,solarBeam], 80);
 
-<<<<<<< HEAD
-var playerPoke = charmander;
-var enemyPoke = squirtle;
-=======
 var objPoke = {
     0: {
         "name" : "Charmander",
@@ -58,8 +51,6 @@ var objPoke = {
 }
 
 function GetRandomInt(min,max){
-    min = Math.ceil(min);
-    max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min; 
 } 
 
@@ -80,7 +71,6 @@ var attack3 = playerPoke.attack(gameStates.enemyPoke, gameStates.playerPoke[2].d
 var attack4 = playerPoke.attack(gameStates.enemyPoke, gameStates.playerPoke[3].damage);
  */
 
->>>>>>> 2bef6c1662b2d3a8a4a2bac91d8846927b883cc8
 
 
 playerPoke.attack(enemyPoke, 100);
