@@ -15,7 +15,4 @@ class Pokemon{
         console.log("el daño es" + damage);
         console.log("La vida de EnemyPoke es" + gameStates.enemyPoke.life);
     }
-
 }
-
-

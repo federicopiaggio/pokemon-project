@@ -64,18 +64,25 @@ selector(2)
 
 console.log(gameStates.playerPoke,gameStates.enemyPoke);
 
+// Recorre los ataques, asigna a un boton e imprime en pantalla
+gameStates.playerPoke.attacks.forEach( (attack, key) => {
+    document.getElementById('btnAttack'+(key + 1)).addEventListener("click", () => {
+        gameStates.playerPoke.attack(gameStates.enemyPoke, attack.damage);
+        dispararAtaque("left", `${objPoke[0].name} uso el ataqueue ${attack.name}`)
+    } )
+})
 
-var attack1 = gameStates.playerPoke.attack(gameStates.enemyPoke, gameStates.playerPoke.attacks[0].damage);
+
+//var attack1 = gameStates.playerPoke.attack(gameStates.enemyPoke, gameStates.playerPoke.attacks[0].damage);
+
 /* var attack2 = playerPoke.attack(gameStates.enemyPoke, gameStates.playerPoke[1].damage);
 var attack3 = playerPoke.attack(gameStates.enemyPoke, gameStates.playerPoke[2].damage);
 var attack4 = playerPoke.attack(gameStates.enemyPoke, gameStates.playerPoke[3].damage);
- */
+*/
 
 
-
-playerPoke.attack(enemyPoke, 100);
-
-enemyPoke.attack(playerPoke, 100);
+gameStates.playerPoke.attack(gameStates.enemyPoke, 100);
+gameStates.enemyPoke.attack(gameStates.playerPoke, 100);
 
 
 
