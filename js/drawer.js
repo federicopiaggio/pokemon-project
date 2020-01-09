@@ -24,10 +24,6 @@ var charmander = new Pokemon ("Charmander", 45, "Fire" , 1, [ember, scratch,flam
 var squirtle = new Pokemon ("Squirtle", 40, "Water" , 1, [bubble,rainSplash,waterGun,tackle], 70);
 var bulbasaur = new Pokemon ("Bulbasaur", 40 , "Plant", 1, [vineWhip,tackle,razorLeaf,solarBeam], 80);
 
-<<<<<<< HEAD
-var playerPoke = charmander;
-var enemyPoke = squirtle;
-=======
 var objPoke = {
     0: {
         "name" : "Charmander",
@@ -58,8 +54,6 @@ var objPoke = {
 }
 
 function GetRandomInt(min,max){
-    min = Math.ceil(min);
-    max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min; 
 } 
 
@@ -73,19 +67,25 @@ selector(2)
 
 console.log(gameStates.playerPoke,gameStates.enemyPoke);
 
+// Recorre los ataques, asigna a un boton e imprime en pantalla
+gameStates.playerPoke.attacks.forEach( (attack, key) => {
+    document.getElementById('btnAttack'+(key + 1)).addEventListener("click", () => {
+        gameStates.playerPoke.attack(gameStates.enemyPoke, attack.damage);
+        dispararAtaque("left", `${objPoke[0].name} uso el ataqueue ${attack.name}`)
+    } )
+})
 
-var attack1 = gameStates.playerPoke.attack(gameStates.enemyPoke, gameStates.playerPoke.attacks[0].damage);
+
+//var attack1 = gameStates.playerPoke.attack(gameStates.enemyPoke, gameStates.playerPoke.attacks[0].damage);
+
 /* var attack2 = playerPoke.attack(gameStates.enemyPoke, gameStates.playerPoke[1].damage);
 var attack3 = playerPoke.attack(gameStates.enemyPoke, gameStates.playerPoke[2].damage);
 var attack4 = playerPoke.attack(gameStates.enemyPoke, gameStates.playerPoke[3].damage);
- */
-
->>>>>>> 2bef6c1662b2d3a8a4a2bac91d8846927b883cc8
+*/
 
 
-playerPoke.attack(enemyPoke, 100);
-
-enemyPoke.attack(playerPoke, 100);
+gameStates.playerPoke.attack(gameStates.enemyPoke, 100);
+gameStates.enemyPoke.attack(gameStates.playerPoke, 100);
 
 
 

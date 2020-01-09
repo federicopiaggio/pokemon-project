@@ -5,5 +5,4 @@ class Attack {
         this.quantities = quantities;
         this.type = type;
     }
-
 }
