@@ -24,6 +24,10 @@ body{
     margin: 100px auto;
 }
 
+.hidden {
+    display: none;
+}
+
 .battleCamp-card{
     background-image: url(../canvas/arena00.jpg);
     background-repeat: no-repeat;
@@ -64,16 +68,16 @@ body{
 /* ACA ARRANCA EL CSS ESPECIFICO DEL INDEX.HTML  */
 
 .main-title{
-    margin: auto;
-    width: 40%;
+    width: 500px;
     margin-top: 30px;
-    justify-content: center;
-    align-items: center;
 }
 
 .main{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .main-title img{
@@ -82,9 +86,26 @@ body{
 
 
 .selector{
-    justify-content: center;
-    align-items: center;
+    display: flex;
+    justify-content: space-around;
     width: 500px;
-    margin: 0 auto;
     margin-top: 40px;
+}
+
+.btnB{
+    width: 100px;
+    height: 100px;
+    margin: 0 20px;
+    border-radius: 100%;
+    background-color: white;
+}
+
+.btnB img {
+    width: 90%;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+h3{
+    font-size: 20pt;
 }

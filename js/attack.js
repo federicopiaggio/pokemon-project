@@ -1,3 +1,6 @@
+
+//Clase de ataque
+
 class Attack {
     constructor(name, damage, quantities, type){
         this.name = name;
