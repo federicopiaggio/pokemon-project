@@ -16,7 +16,7 @@ function dispararAtaque( position, text = "" ){
 function asignarAtaque(attack,key){
     document.getElementById('btnAttack'+(key + 1)).addEventListener("click", () => {
         gameStates.playerPoke.attack(gameStates.enemyPoke, attack.damage);
-        dispararAtaque("left", `${gameStates.playerPoke.name} uso el ataque ${attack.name}`)
+        dispararAtaque("left", `${gameStates.playerPoke.name} uso el ataque ${attack.name}`);
     } );
 }
 
@@ -27,6 +27,8 @@ function asignarPokemon(key, select){
     document.getElementById('btnPoke' + (key + 1)).addEventListener("click", () => {
         selector(key);
         $("#main1").addClass("hidden");
+        $("#main1").removeClass("main");
+        $("#main2").removeClass("hidden");
     });
 
 }

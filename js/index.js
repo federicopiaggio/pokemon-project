@@ -1,6 +1,6 @@
+
+
 //------------INDEX SOLO PARA INSTANCIAR-------------
-
-
 
 
 // Objeto para instanciar y separar ambos pokemones
@@ -17,14 +17,25 @@ var tackle = new Attack ("Tackle", 85, 25, "Normal");
 var razorLeaf = new Attack ("Razor Leaf", 105, 10, "Plant");
 var solarBeam = new Attack ("Solar Beam", 120 , 5, "Plant");
 
-var ember = new Attack ("Ember", 20, 20, "Fire");
-var scratch = new Attack ("Scratch", 10, 25, "Normal");
-var flamethrower = new Attack ("Flamethrower", 35, 20, "Fire");
-var fireSpin = new Attack ("Fire Spin", 45, 5, "Fire");
+var ember = new Attack ("Ember", 105, 20, "Fire");
+var scratch = new Attack ("Scratch", 80, 25, "Normal");
+var flamethrower = new Attack ("Flamethrower", 110, 20, "Fire");
+var fireSpin = new Attack ("Fire Spin", 120, 5, "Fire");
 
 var bubble = new Attack ("Bubble", 95, 20, "Water");
 var rainSplash = new Attack ("Rain Splash", 110, 25, "Water");
 var waterGun = new Attack ("Water Gun", 115, 20, "Water");
+
+// Instancia de los Pokemones a través de la función selector que esta en aplication
+
+function instancePoke(e, select){
+    gameStates.enemyPoke = new Pokemon (objPoke[e].name,objPoke[e].life,objPoke[e].type,objPoke[e].level,objPoke[e].attacks,objPoke[e].defense);
+    gameStates.playerPoke = new Pokemon (objPoke[select].name,objPoke[select].life,objPoke[select].type,objPoke[select].level,objPoke[select].attacks,objPoke[select].defense);
+    console.log(gameStates.playerPoke);
+    console.log(gameStates.enemyPoke);
+}
+
+
 
 //ObjPoke es un obj literal / arrays de pokemones
 
@@ -35,7 +46,7 @@ var objPoke = [
         "type" : "Fire",
         "level" : 1,
         "attacks" : [ember, scratch,flamethrower,fireSpin],
-        "defense" : 65,
+        "defense" : 70,
     },
 
     {
@@ -53,10 +64,15 @@ var objPoke = [
         "type" : "Plant",
         "level" : 1,
         "attacks" : [vineWhip,tackle,razorLeaf,solarBeam],
-        "defense" : 75,
+        "defense" : 80,
     },
 ]
 
+//OPCION DE INSTANCIA PERO SIN RANDOM 
+
+/* var charmander = new Pokemon ("Charmander", 105, "Fire", 1 , [ember,scratch,flamethrower,fireSpin], 70);
+var squirtle = new Pokemon ("Squirtle", 100, "Water", 1 , [bubble,tackle,waterGun,rainSplash], 75);
+var bulbasaur = new Pokemon ("Bulbasaur", 95, "Plant", 1 , [vineWhip,tackle,razorLeaf,solarBeam], 80); */
 
 
 //PRUEBA DE COSAS
