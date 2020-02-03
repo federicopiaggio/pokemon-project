@@ -16,16 +16,32 @@ function dispararAtaque( position, text = "" ){
 function asignarAtaque(attack,key){
     document.getElementById('btnAttack'+(key + 1)).addEventListener("click", () => {
         gameStates.playerPoke.attack(gameStates.enemyPoke, attack.damage);
-        dispararAtaque("left", `${gameStates.playerPoke.name} uso el ataque ${attack.name}`);
+        if(gameStates.enemyPoke.life <= 0){
+            alert(gameStates.playerPoke.name + " ha ganado!");
+            return false;
+        }
+        var ataqueEnemy = GetRandomInt(0,3);
+        gameStates.enemyPoke.attack(gameStates.playerPoke,gameStates.enemyPoke.attacks[ataqueEnemy].damage);
+        if(gameStates.playerPoke.life <= 0) {
+            alert(gameStates.enemyPoke.name + " ha ganado!");
+            return false;
+        }
+        dispararAtaque("left", `${gameStates.playerPoke.name} uso el ataque ${attack.name} la vida del enemigo es ${gameStates.enemyPoke.life}`);
+        dispararAtaque('right', `${gameStates.enemyPoke.name} uso el ataque ${gameStates.enemyPoke.attacks[ataqueEnemy].name}  la vida del enemigo es ${gameStates.playerPoke.life}`)
     } );
 }
 
 // Funcion que asigna cada pokemon segun parametro y cada boton
 
 function asignarPokemon(key, select){
+    console.log("lala");
     console.log(key, select);
     document.getElementById('btnPoke' + (key + 1)).addEventListener("click", () => {
         selector(key);
+        $("#imgPoke1").attr("src", "./sprites/" + select.name + ".png");
+        $("#imgPoke2").attr("src", "./sprites/" + gameStates.enemyPoke.name + ".png");
+         $("#pokemon-trainer").text(gameStates.playerPoke.name);
+        $("#pokemon-enemy").text(gameStates.enemyPoke.name);
         $("#main1").addClass("hidden");
         $("#main1").removeClass("main");
         $("#main2").removeClass("hidden");

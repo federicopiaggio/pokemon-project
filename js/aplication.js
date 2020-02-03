@@ -6,6 +6,9 @@ function GetRandomInt(min,max){
     return Math.floor(Math.random() * (max - min + 1)) + min; 
 } 
 
+
+
+
 //Función para seleccionar a los pokemones segun un parametro de 0 a 2 y ejecuta función que instancea
 
 function selector(select = 0){
