@@ -19,13 +19,33 @@ body{
     width: 600px;
     height: 400px;
     background-color: #eaeaea;
-    /* border: 1px solid black; */
     color: black;
-    margin: 100px auto;
+    margin: 60px 0px 30px 0px;
+    text-align: center;
+    border-radius: 15px;
+    
 }
 
 .hidden {
     display: none;
+}
+
+.fondo-texto{
+    text-align: left;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.fondo-texto div{
+    width: 300px;
+    padding: 0px 10px;
+}
+
+.numlife{
+    display: inline;
+    padding-left: 10px;
+
 }
 
 .battleCamp-card{
@@ -36,18 +56,37 @@ body{
     height: 300px;
     margin: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    border-radius: 5px;
+    box-shadow: 0px 4px rgba(34, 14, 2, 0.2);
+}
+
+h2{
+    margin: 0 auto;
+}
+.pokemon
+
+.poke-names{   
+    background-color: white;
+    padding: 10px;
+    text-align: initial;
+    border-radius: 10px 30px;
+    box-shadow: 5px 2px rgba(2,3,6,0.5);
+    width: 200px;
+    margin: 5px;
 }
 
 .pokemon > img{
     flex: 1 auto;
     width: 90px;
-    margin-top: 190px;
+    margin-top: 95px;
+    margin-right: 10px;
 }
 
 .joystick{
     width: 600px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .botonesCrad{
@@ -69,7 +108,7 @@ body{
 
 .main-title{
     width: 500px;
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 .main{

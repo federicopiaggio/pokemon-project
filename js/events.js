@@ -11,23 +11,46 @@ function dispararAtaque( position, text = "" ){
     dir.textContent = text;
 }
 
-// Función que asigna cada ataque a cada botón del pokemon
+function nameAttack (attack,key){
+    $("#btnName"+ (key + 1)).text(attack.name);
+}
+
+function iconAttack (attack,key){
+    if(attack.type == "Fire"){
+    $("#imgAttack" + (key + 1)).attr("src", "./sprites/ataque-fuego.png");
+    }
+
+    if(attack.type == "Plant"){
+        $("#imgAttack" + (key + 1)).attr("src", "./sprites/ataque-hoja.png");
+    }
+
+    if(attack.type == "Water"){
+        $("#imgAttack" + (key + 1)).attr("src", "./sprites/ataque-agua.png");
+    }
+}
+
+// Función que asigna cada ataque a cada botón del pokemon y lanza los eventos que modifican la visual
 
 function asignarAtaque(attack,key){
     document.getElementById('btnAttack'+(key + 1)).addEventListener("click", () => {
-        gameStates.playerPoke.attack(gameStates.enemyPoke, attack.damage);
+        var damagePlayer = gameStates.playerPoke.attack(gameStates.enemyPoke, attack.damage);
+        $("#lifeBar2").attr("value", gameStates.enemyPoke.life);
+        $("#numLife2").text(gameStates.enemyPoke.life);
+
         if(gameStates.enemyPoke.life <= 0){
-            alert(gameStates.playerPoke.name + " ha ganado!");
+            alert("You win!");
             return false;
         }
         var ataqueEnemy = GetRandomInt(0,3);
-        gameStates.enemyPoke.attack(gameStates.playerPoke,gameStates.enemyPoke.attacks[ataqueEnemy].damage);
+        var damageEnemy = gameStates.enemyPoke.attack(gameStates.playerPoke,gameStates.enemyPoke.attacks[ataqueEnemy].damage);
+        $("#lifeBar1").attr("value", gameStates.playerPoke.life);
+        $("#numLife1").text(gameStates.playerPoke.life);
         if(gameStates.playerPoke.life <= 0) {
-            alert(gameStates.enemyPoke.name + " ha ganado!");
+            alert("You loose");
             return false;
         }
-        dispararAtaque("left", `${gameStates.playerPoke.name} uso el ataque ${attack.name} la vida del enemigo es ${gameStates.enemyPoke.life}`);
-        dispararAtaque('right', `${gameStates.enemyPoke.name} uso el ataque ${gameStates.enemyPoke.attacks[ataqueEnemy].name}  la vida del enemigo es ${gameStates.playerPoke.life}`)
+        dispararAtaque("left", `${gameStates.playerPoke.name} use ${attack.name} and the damage was ${damagePlayer}!`);
+        dispararAtaque('right', `${gameStates.enemyPoke.name} use ${gameStates.enemyPoke.attacks[ataqueEnemy].name} and the damage was ${damageEnemy}!`)
     } );
 }
 
@@ -38,13 +61,20 @@ function asignarPokemon(key, select){
     console.log(key, select);
     document.getElementById('btnPoke' + (key + 1)).addEventListener("click", () => {
         selector(key);
-        $("#imgPoke1").attr("src", "./sprites/" + select.name + ".png");
+        $("#imgPoke1").attr("src", "./sprites/" + gameStates.playerPoke.name + ".png");
         $("#imgPoke2").attr("src", "./sprites/" + gameStates.enemyPoke.name + ".png");
-         $("#pokemon-trainer").text(gameStates.playerPoke.name);
+        $("#lifeBar1").attr("max", gameStates.playerPoke.life);
+        $("#lifeBar2").attr("max", gameStates.enemyPoke.life);
+        $("#pokemon-trainer").text(gameStates.playerPoke.name);
         $("#pokemon-enemy").text(gameStates.enemyPoke.name);
         $("#main1").addClass("hidden");
         $("#main1").removeClass("main");
         $("#main2").removeClass("hidden");
+        $("#main2").addClass("main");
+        $("#lifeBar1").attr("value", gameStates.playerPoke.life);
+        $("#lifeBar2").attr("value", gameStates.enemyPoke.life);
+        $("#numLife1").text(gameStates.playerPoke.life);
+        $("#numLife2").text(gameStates.enemyPoke.life);
     });
 
 }

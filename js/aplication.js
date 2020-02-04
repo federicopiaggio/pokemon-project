@@ -22,6 +22,8 @@ function selector(select = 0){
 function attacksPlayer(){
     gameStates.playerPoke.attacks.forEach( (attack, key) => {
         asignarAtaque(attack, key);
+        nameAttack (attack,key);
+        iconAttack (attack,key);
     });
 }
 

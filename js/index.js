@@ -45,7 +45,7 @@ var objPoke = [
         "life" : 105,
         "type" : "Fire",
         "level" : 1,
-        "attacks" : [ember, scratch,flamethrower,fireSpin],
+        "attacks" : [scratch,ember,flamethrower,fireSpin],
         "defense" : 70,
     },
 
@@ -54,7 +54,7 @@ var objPoke = [
         "life" : 100,
         "type" : "Water",
         "level" : 1,
-        "attacks" : [bubble,rainSplash,waterGun,tackle],
+        "attacks" : [tackle,bubble,rainSplash,waterGun],
         "defense" : 75,
     },
 
@@ -63,7 +63,7 @@ var objPoke = [
         "life" : 95,
         "type" : "Plant",
         "level" : 1,
-        "attacks" : [vineWhip,tackle,razorLeaf,solarBeam],
+        "attacks" : [tackle,vineWhip,razorLeaf,solarBeam],
         "defense" : 80,
     },
 ]
