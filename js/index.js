@@ -12,19 +12,19 @@ var gameStates = {
 
 //Instanciado de los ataques
 
-var vineWhip = new Attack ("Vine Whip", 100 , 20, "Plant");
-var tackle = new Attack ("Tackle", 85, 25, "Normal");
-var razorLeaf = new Attack ("Razor Leaf", 105, 10, "Plant");
-var solarBeam = new Attack ("Solar Beam", 120 , 5, "Plant");
+var vineWhip = new Attack ("Vine Whip", 90, 1, "Plant", true);
+var tackle = new Attack ("Tackle", 95, 3, "Normal", true);
+var razorLeaf = new Attack ("Razor Leaf", 95, 1, "Plant", true);
+var solarBeam = new Attack ("Solar Beam", 105 , 1, "Plant", true);
 
-var ember = new Attack ("Ember", 105, 20, "Fire");
-var scratch = new Attack ("Scratch", 80, 25, "Normal");
-var flamethrower = new Attack ("Flamethrower", 110, 20, "Fire");
-var fireSpin = new Attack ("Fire Spin", 120, 5, "Fire");
+var ember = new Attack ("Ember", 95, 1, "Fire", true);
+var scratch = new Attack ("Scratch", 95, 3, "Normal", true);
+var flamethrower = new Attack ("Flamethrower", 100, 1, "Fire", true);
+var fireSpin = new Attack ("Fire Spin", 110, 1, "Fire", true);
 
-var bubble = new Attack ("Bubble", 95, 20, "Water");
-var rainSplash = new Attack ("Rain Splash", 110, 25, "Water");
-var waterGun = new Attack ("Water Gun", 115, 20, "Water");
+var bubble = new Attack ("Bubble", 95, 1, "Water", true);
+var rainSplash = new Attack ("Rain Splash", 100, 1, "Water", true);
+var waterGun = new Attack ("Water Gun", 110, 1, "Water", true);
 
 // Instancia de los Pokemones a través de la función selector que esta en aplication
 
@@ -38,7 +38,7 @@ function instancePoke(e, select){
 
 
 //ObjPoke es un obj literal / arrays de pokemones
-
+    
 var objPoke = [
     {
         "name" : "Charmander",

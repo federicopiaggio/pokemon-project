@@ -11,11 +11,9 @@ class Pokemon{
     }
 
     attack(enemy, damage){
+        
         damage -= enemy.defense;
         enemy.life -= damage;
-        console.log( this.name + " ha atacado");
-        console.log("el daño es" + damage);
-        console.log("La vida de " + enemy.name + " es" + enemy.life);
         return damage;
     }
 }

@@ -11,9 +11,14 @@ function dispararAtaque( position, text = "" ){
     dir.textContent = text;
 }
 
+
+//Funcion que asigna el nombre segun el tipo de ataque 
+
 function nameAttack (attack,key){
     $("#btnName"+ (key + 1)).text(attack.name);
 }
+
+//Funcion que asigna la imagen segun el tipo de ataque 
 
 function iconAttack (attack,key){
     if(attack.type == "Fire"){
@@ -29,11 +34,19 @@ function iconAttack (attack,key){
     }
 }
 
-// Función que asigna cada ataque a cada botón del pokemon y lanza los eventos que modifican la visual
+// Función que asigna cada ataque a cada botón del pokemon y lanza los eventos que modifican la visual y los ataques de los pokemones
 
 function asignarAtaque(attack,key){
-    document.getElementById('btnAttack'+(key + 1)).addEventListener("click", () => {
-        var damagePlayer = gameStates.playerPoke.attack(gameStates.enemyPoke, attack.damage);
+
+    $('#btnAttack'+(key + 1)).on("click", () => {
+        
+        playerAttack(attack);
+
+        if (attack.quantities == 0){
+            $('#btnAttack'+ (key + 1)).off("click");
+            $('#btnAttack'+ (key + 1)).animate({opacity: '0.3'}, 1200);
+        }
+
         $("#lifeBar2").attr("value", gameStates.enemyPoke.life);
         $("#numLife2").text(gameStates.enemyPoke.life);
 
@@ -41,24 +54,28 @@ function asignarAtaque(attack,key){
             alert("You win!");
             return false;
         }
-        var ataqueEnemy = GetRandomInt(0,3);
-        var damageEnemy = gameStates.enemyPoke.attack(gameStates.playerPoke,gameStates.enemyPoke.attacks[ataqueEnemy].damage);
+
+        enemyAttack();
+
+        if(gameStates.playerPoke.life <= 0){
+            alert("You lose!"); 
+            return false;
+        }  
+        
         $("#lifeBar1").attr("value", gameStates.playerPoke.life);
         $("#numLife1").text(gameStates.playerPoke.life);
-        if(gameStates.playerPoke.life <= 0) {
-            alert("You loose");
-            return false;
-        }
-        dispararAtaque("left", `${gameStates.playerPoke.name} use ${attack.name} and the damage was ${damagePlayer}!`);
-        dispararAtaque('right', `${gameStates.enemyPoke.name} use ${gameStates.enemyPoke.attacks[ataqueEnemy].name} and the damage was ${damageEnemy}!`)
-    } );
+        
+        
+    });
 }
+
+   
+
+  
 
 // Funcion que asigna cada pokemon segun parametro y cada boton
 
 function asignarPokemon(key, select){
-    console.log("lala");
-    console.log(key, select);
     document.getElementById('btnPoke' + (key + 1)).addEventListener("click", () => {
         selector(key);
         $("#imgPoke1").attr("src", "./sprites/" + gameStates.playerPoke.name + ".png");
@@ -76,12 +93,6 @@ function asignarPokemon(key, select){
         $("#numLife1").text(gameStates.playerPoke.life);
         $("#numLife2").text(gameStates.enemyPoke.life);
     });
-
-}
-
-// Remover ataque
-function borrarAtaque(){
-    elemento.remove()
 
 }
 
