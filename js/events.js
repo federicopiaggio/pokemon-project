@@ -11,82 +11,108 @@ function dispararAtaque( position, text = "" ){
     dir.textContent = text;
 }
 
-function nameAttack (attack,key){
-    $("#btnName"+ (key + 1)).text(attack.name);
+// Recorre el array de los ataques, y ejecuta la función que asigna los botones a cada ataque
+
+function attacksPlayer(){
+    gameStates.playerPoke.attacks.forEach( (attack, index) => {
+        btnAttack[index] = $("#btnAttack"  + index);
+        btnAttack[index].fadeTo("slow",1);
+        renewQuants (attack, index);
+        nameAttack (attack,index);
+        iconAttack (attack,index);
+    });
 }
+
+//Funcion que asigna el nombre segun el tipo de ataque 
+
+function nameAttack (attack,key){
+    $("#btnName"+ (key)).text(attack.name);
+}
+
+//Funcion que asigna la imagen segun el tipo de ataque 
 
 function iconAttack (attack,key){
     if(attack.type == "Fire"){
-    $("#imgAttack" + (key + 1)).attr("src", "./sprites/ataque-fuego.png");
+    $("#imgAttack" + (key)).attr("src", "./sprites/ataque-fuego.png");
     }
 
     if(attack.type == "Plant"){
-        $("#imgAttack" + (key + 1)).attr("src", "./sprites/ataque-hoja.png");
+        $("#imgAttack" + (key)).attr("src", "./sprites/ataque-hoja.png");
     }
 
     if(attack.type == "Water"){
-        $("#imgAttack" + (key + 1)).attr("src", "./sprites/ataque-agua.png");
+        $("#imgAttack" + (key)).attr("src", "./sprites/ataque-agua.png");
     }
 }
 
-// Función que asigna cada ataque a cada botón del pokemon y lanza los eventos que modifican la visual
 
-function asignarAtaque(attack,key){
-    document.getElementById('btnAttack'+(key + 1)).addEventListener("click", () => {
-        var damagePlayer = gameStates.playerPoke.attack(gameStates.enemyPoke, attack.damage);
-        $("#lifeBar2").attr("value", gameStates.enemyPoke.life);
-        $("#numLife2").text(gameStates.enemyPoke.life);
-
-        if(gameStates.enemyPoke.life <= 0){
-            alert("You win!");
-            return false;
-        }
-        var ataqueEnemy = GetRandomInt(0,3);
-        var damageEnemy = gameStates.enemyPoke.attack(gameStates.playerPoke,gameStates.enemyPoke.attacks[ataqueEnemy].damage);
-        $("#lifeBar1").attr("value", gameStates.playerPoke.life);
-        $("#numLife1").text(gameStates.playerPoke.life);
-        if(gameStates.playerPoke.life <= 0) {
-            alert("You loose");
-            return false;
-        }
-        dispararAtaque("left", `${gameStates.playerPoke.name} use ${attack.name} and the damage was ${damagePlayer}!`);
-        dispararAtaque('right', `${gameStates.enemyPoke.name} use ${gameStates.enemyPoke.attacks[ataqueEnemy].name} and the damage was ${damageEnemy}!`)
-    } );
+   
+function renewQuants (attack, key) {
+    if(key == 0) {
+        attack.quantities = 3;
+    }
+    else{
+        attack.quantities = 1;
+    }
 }
 
-// Funcion que asigna cada pokemon segun parametro y cada boton
+function resetMain (){
+    $("#main2").animate({opacity:0},1000);
+    $("#main2").addClass("hidden");
+    $("#main2").removeClass("main");
+    $("#main1").addClass("main");
+    $("#main1").removeClass("hidden");
+    $("#main1").fadeIn();
+}
 
-function asignarPokemon(key, select){
-    console.log("lala");
-    console.log(key, select);
-    document.getElementById('btnPoke' + (key + 1)).addEventListener("click", () => {
-        selector(key);
-        $("#imgPoke1").attr("src", "./sprites/" + gameStates.playerPoke.name + ".png");
-        $("#imgPoke2").attr("src", "./sprites/" + gameStates.enemyPoke.name + ".png");
-        $("#lifeBar1").attr("max", gameStates.playerPoke.life);
-        $("#lifeBar2").attr("max", gameStates.enemyPoke.life);
-        $("#pokemon-trainer").text(gameStates.playerPoke.name);
-        $("#pokemon-enemy").text(gameStates.enemyPoke.name);
-        $("#main1").addClass("hidden");
-        $("#main1").removeClass("main");
-        $("#main2").removeClass("hidden");
-        $("#main2").addClass("main");
-        $("#lifeBar1").attr("value", gameStates.playerPoke.life);
-        $("#lifeBar2").attr("value", gameStates.enemyPoke.life);
-        $("#numLife1").text(gameStates.playerPoke.life);
-        $("#numLife2").text(gameStates.enemyPoke.life);
+// Función que asigna cada ataque a cada botón del pokemon y lanza los eventos que modifican la visual y los ataques de los pokemones
+var click = 0;
+function asignarAtaque(){
+    btnAttack.forEach((btnAttack,index) =>{
+        btnAttack.on("click",()=>{
+            playerAttack(index);
+            setTimeout(enemyAttack,600);
+            
+        });
     });
 
 }
 
-// Remover ataque
-function borrarAtaque(){
-    elemento.remove()
+// funcion que maneja la selección de eventos click en pokemon
 
+function asignarPokemon(){
+
+    btnPoke.forEach( (btnPoke, index) =>{
+        btnPoke.addEventListener("click", () =>{
+            selector(index);
+            attacksPlayer();
+            $("#imgPoke1").attr("src", "./sprites/" + gameStates.playerPoke.name + ".png");
+            $("#imgPoke2").attr("src", "./sprites/" + gameStates.enemyPoke.name + ".png");
+            $("#lifeBar1").attr("max", gameStates.playerPoke.life);
+            $("#lifeBar2").attr("max", gameStates.enemyPoke.life);
+            $("#pokemon-trainer").text(gameStates.playerPoke.name);
+            $("#pokemon-enemy").text(gameStates.enemyPoke.name);
+            
+            
+            setTimeout(()=>{ 
+            $("#main1").fadeOut(500),$("#main1").addClass("hidden")}, 100); 
+            setTimeout(()=>{
+                $("#main2").removeClass("hidden"),
+                $("#main2").addClass("main")
+            },600);
+            setTimeout(()=>{
+                $("#main2").animate({opacity:1},1000)
+            },600);
+            $("#lifeBar1").attr("value", gameStates.playerPoke.life);
+            $("#lifeBar2").attr("value", gameStates.enemyPoke.life);
+            $("#numLife1").text(gameStates.playerPoke.life);
+            $("#numLife2").text(gameStates.enemyPoke.life);
+            asignarAtaque();
+            
+        });
+        
+    });
 }
-
-
-
 
 
 
