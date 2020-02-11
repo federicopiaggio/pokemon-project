@@ -31,7 +31,18 @@ function playerAttack(index){
         attack.quantities -= 1;
         var damageResis = resisDebPlayer(attack); 
         var damagePlayer = gameStates.playerPoke.attack(gameStates.enemyPoke, damageResis); 
-        dispararAtaque("left", `${gameStates.playerPoke.name} use ${attack.name} and the damage was ${damagePlayer}!`);
+        document.getElementById("imgPoke1").animate([
+            // keyframes
+
+            { transform: 'translateX(0px) translateY(0px)  rotateY(180deg)' }, 
+            { transform: 'translateX(30px) translateY(-10px)  rotateY(180deg)' },
+            { transform: 'translateX(0px) translateY(0px)  rotateY(180deg)' },        
+          ], { 
+            // timing options
+            duration: 300,
+            iterations: 1
+          });
+        setTimeout(()=>{dispararAtaque("left", `${gameStates.playerPoke.name} use ${attack.name} and the damage was ${damagePlayer}!`)},100);
         $("#lifeBar2").attr("value", gameStates.enemyPoke.life);
         $("#numLife2").text(gameStates.enemyPoke.life); 
 /*         console.log( "cantidad de ataques = " + attack.quantities);
@@ -68,7 +79,20 @@ function enemyAttack(){
     else{
         var ataqueEnemy = GetRandomInt(0,3);
         var enemyDamage = resisDebEnemy(gameStates.enemyPoke.attacks[ataqueEnemy]);
-        var damageEnemy = gameStates.enemyPoke.attack(gameStates.playerPoke,enemyDamage);  
+        var damageEnemy = gameStates.enemyPoke.attack(gameStates.playerPoke,enemyDamage); 
+        document.getElementById("imgPoke2").animate([
+            // keyframes 
+            { transform: 'translateX(0px) translateY(0px) ' }, 
+            { transform: 'translateX(-30px) translateY(-10px) ' },
+            { transform: 'translateX(0px) translateY(0px) ' }, 
+
+
+
+          ], { 
+            // timing options
+            duration: 300,
+            iterations: 1
+          });
         dispararAtaque('right', `${gameStates.enemyPoke.name} use ${gameStates.enemyPoke.attacks[ataqueEnemy].name} and the damage was ${damageEnemy}!`);
 
         $("#lifeBar1").attr("value", gameStates.playerPoke.life);
