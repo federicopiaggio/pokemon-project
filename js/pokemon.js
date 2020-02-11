@@ -11,7 +11,7 @@ class Pokemon{
     }
 
     attack(enemy, damage){
-        
+    
         damage -= enemy.defense;
         enemy.life -= damage;
         return damage;

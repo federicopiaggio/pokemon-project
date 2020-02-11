@@ -12,27 +12,26 @@ var gameStates = {
 
 //Instanciado de los ataques
 
-var vineWhip = new Attack ("Vine Whip", 90, 1, "Plant", true);
-var tackle = new Attack ("Tackle", 95, 3, "Normal", true);
-var razorLeaf = new Attack ("Razor Leaf", 95, 1, "Plant", true);
-var solarBeam = new Attack ("Solar Beam", 105 , 1, "Plant", true);
+var vineWhip = new Attack ("Vine Whip", 90, 1, "Plant");
+var tackle = new Attack ("Tackle", 95, 3, "Normal");
+var razorLeaf = new Attack ("Razor Leaf", 95, 1, "Plant");
+var solarBeam = new Attack ("Solar Beam", 105 , 1, "Plant");
 
-var ember = new Attack ("Ember", 95, 1, "Fire", true);
-var scratch = new Attack ("Scratch", 95, 3, "Normal", true);
-var flamethrower = new Attack ("Flamethrower", 100, 1, "Fire", true);
-var fireSpin = new Attack ("Fire Spin", 110, 1, "Fire", true);
+var ember = new Attack ("Ember", 95, 1, "Fire");
+var scratch = new Attack ("Scratch", 95, 3, "Normal");
+var flamethrower = new Attack ("Flamethrower", 100, 1, "Fire");
+var fireSpin = new Attack ("Fire Spin", 110, 1, "Fire");
 
-var bubble = new Attack ("Bubble", 95, 1, "Water", true);
-var rainSplash = new Attack ("Rain Splash", 100, 1, "Water", true);
-var waterGun = new Attack ("Water Gun", 110, 1, "Water", true);
+var bubble = new Attack ("Bubble", 95, 1, "Water");
+var rainSplash = new Attack ("Rain Splash", 100, 1, "Water");
+var waterGun = new Attack ("Water Gun", 110, 1, "Water");
 
-// Instancia de los Pokemones a través de la función selector que esta en aplication
 
 function instancePoke(e, select){
     gameStates.enemyPoke = new Pokemon (objPoke[e].name,objPoke[e].life,objPoke[e].type,objPoke[e].level,objPoke[e].attacks,objPoke[e].defense);
     gameStates.playerPoke = new Pokemon (objPoke[select].name,objPoke[select].life,objPoke[select].type,objPoke[select].level,objPoke[select].attacks,objPoke[select].defense);
-    console.log(gameStates.playerPoke);
-    console.log(gameStates.enemyPoke);
+    /* console.log(gameStates.playerPoke);
+    console.log(gameStates.enemyPoke); */
 }
 
 
@@ -68,17 +67,30 @@ var objPoke = [
     },
 ]
 
-//OPCION DE INSTANCIA PERO SIN RANDOM 
 
-/* var charmander = new Pokemon ("Charmander", 105, "Fire", 1 , [ember,scratch,flamethrower,fireSpin], 70);
-var squirtle = new Pokemon ("Squirtle", 100, "Water", 1 , [bubble,tackle,waterGun,rainSplash], 75);
-var bulbasaur = new Pokemon ("Bulbasaur", 95, "Plant", 1 , [vineWhip,tackle,razorLeaf,solarBeam], 80); */
+var btnAttack = [];
+var btnPoke = [];
 
 
-//PRUEBA DE COSAS
 
 
-/* gameStates.playerPoke.attack(gameStates.enemyPoke, 100);
-gameStates.enemyPoke.attack(gameStates.playerPoke, 100); */
+/* var charmander = new Pokemon ("Charmander", 105, "Fire", 1 , [scratch,ember,flamethrower,fireSpin], 70);
+var squirtle = new Pokemon ("Squirtle", 100, "Water", 1 , [tackle,bubble,rainSplash,waterGun], 75);
+var bulbasaur = new Pokemon ("Bulbasaur", 95, "Plant", 1 , [tackle,vineWhip,razorLeaf,solarBeam], 80);
 
 
+var pokeArray = [
+    charmander,
+    squirtle,
+    bulbasaur
+];
+
+
+// Instancia de los Pokemones a través de la función selector que esta en aplication
+
+function instancePoke(e, select){
+    var enemyPoke = pokeArray[select];
+    var playerPoke = enemyPoke[e];
+    console.log(playerPoke);
+    console.log(enemyPoke);
+} */
