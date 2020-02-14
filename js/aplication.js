@@ -37,11 +37,21 @@ function playerAttack(index){
             { transform: 'translateX(0px) translateY(0px)  rotateY(180deg)' }, 
             { transform: 'translateX(30px) translateY(-10px)  rotateY(180deg)' },
             { transform: 'translateX(0px) translateY(0px)  rotateY(180deg)' },        
-          ], { 
-            // timing options
-            duration: 300,
-            iterations: 1
-          });
+                ], 
+                    { 
+                        // timing options
+                        duration: 300,
+                        iterations: 1
+        });
+
+        attackImgEvent(attack.type);
+        function imgAttackPla(){
+            console.log("se va imagen");
+         imgAttackPlayer.className = "hidden";
+        }
+        setTimeout(imgAttackPla,500);
+        
+        
         setTimeout(()=>{dispararAtaque("left", `${gameStates.playerPoke.name} use ${attack.name} and the damage was ${damagePlayer}!`)},100);
         $("#lifeBar2").attr("value", gameStates.enemyPoke.life);
         $("#numLife2").text(gameStates.enemyPoke.life); 

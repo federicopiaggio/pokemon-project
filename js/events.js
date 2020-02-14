@@ -23,6 +23,44 @@ function attacksPlayer(){
     });
 }
 
+
+function attackImgEvent(attackType){
+
+    var imgAttackPlayer = document.getElementById("imgAttackPlayer");
+    
+        imgAttackPlayer.className="imgAttack";
+        if(attackType == "Fire"){
+            imgAttackPlayer.src = "./sprites/ataque-fuego.png";
+        }
+        if(attackType == "Plant"){
+            imgAttackPlayer.src = "./sprites/ataque-hoja.png";
+        }
+        if(attackType == "Water"){
+            imgAttackPlayer.src = "./sprites/ataque-agua.png";
+        }
+        if(attackType == "Normal"){
+            imgAttackPlayer.src = "./sprites/ataque-normal.png";
+        }
+        document.getElementById("imgAttackPlayer").animate([
+            // keyframes
+
+            { transform: 'translateX(0px) translateY(0px)  rotateY(180deg)' }, 
+            { transform: 'translateX(200px) translateY(-10px)  rotateY(180deg)' },
+
+
+                ], 
+                    { 
+                        // timing options
+                        duration: 500,
+                        iterations: 1
+        });
+
+       
+      
+        
+        
+}
+
 //Funcion que asigna el nombre segun el tipo de ataque 
 
 function nameAttack (attack,key){
@@ -71,6 +109,7 @@ function asignarAtaque(){
     btnAttack.forEach((btnAttack,index) =>{
         btnAttack.on("click",()=>{
             playerAttack(index);
+            
             setTimeout(enemyAttack,600);
 
         });
