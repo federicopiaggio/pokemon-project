@@ -96,6 +96,14 @@ h2{
     left: -120px;
 }
 
+.imgAttack2{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: -230px;
+    left: 120px;
+}
+
 
 .botonesCrad{
     display: flex;

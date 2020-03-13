@@ -44,7 +44,8 @@ function playerAttack(index){
                         iterations: 1
         });
 
-        attackImgEvent(attack.type);
+        attackImgEvent(attack.type,"imgAttackPlayer","imgAttack");
+
         function imgAttackPla(){
             console.log("se va imagen");
          imgAttackPlayer.className = "hidden";
@@ -55,9 +56,7 @@ function playerAttack(index){
         setTimeout(()=>{dispararAtaque("left", `${gameStates.playerPoke.name} use ${attack.name} and the damage was ${damagePlayer}!`)},100);
         $("#lifeBar2").attr("value", gameStates.enemyPoke.life);
         $("#numLife2").text(gameStates.enemyPoke.life); 
-/*         console.log( "cantidad de ataques = " + attack.quantities);
 
-        console.log("ataque jugador" + index + " ------------------------------------------------------"); */
     if(attack.quantities == 0){
         btnAttack[index].off("click");
         $('#btnAttack'+ (index)).fadeTo("slow", 0.3);
@@ -68,7 +67,7 @@ function playerAttack(index){
 
 //Funcion que regula el ataque del enemy
 
-function enemyAttack(){
+function enemyAttack(){ 
     var bool = true;
     if(gameStates.enemyPoke.life <= 0){
         /* console.log("You win!"); */
@@ -90,6 +89,7 @@ function enemyAttack(){
         var ataqueEnemy = GetRandomInt(0,3);
         var enemyDamage = resisDebEnemy(gameStates.enemyPoke.attacks[ataqueEnemy]);
         var damageEnemy = gameStates.enemyPoke.attack(gameStates.playerPoke,enemyDamage); 
+
         document.getElementById("imgPoke2").animate([
             // keyframes 
             { transform: 'translateX(0px) translateY(0px) ' }, 
@@ -103,12 +103,17 @@ function enemyAttack(){
             duration: 300,
             iterations: 1
           });
+        attackImgEvent(gameStates.enemyPoke.attacks[ataqueEnemy].type,"imgAttackEnemy","imgAttack2");
         dispararAtaque('right', `${gameStates.enemyPoke.name} use ${gameStates.enemyPoke.attacks[ataqueEnemy].name} and the damage was ${damageEnemy}!`);
 
         $("#lifeBar1").attr("value", gameStates.playerPoke.life);
         $("#numLife1").text(gameStates.playerPoke.life);
 
-
+        function imgAttackEne(){
+         document.getElementById("imgAttackEnemy").className = "hidden";
+        }
+        setTimeout(imgAttackEne,500);
+          
         if(gameStates.playerPoke.life <= 0){
             /* console.log("You lose!"); */
             alert("You lose!"); 

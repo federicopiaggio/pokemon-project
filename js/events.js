@@ -24,28 +24,35 @@ function attacksPlayer(){
 }
 
 
-function attackImgEvent(attackType){
-
-    var imgAttackPlayer = document.getElementById("imgAttackPlayer");
+function attackImgEvent(attackType,eventAttack,attackClass){
     
-        imgAttackPlayer.className="imgAttack";
-        if(attackType == "Fire"){
-            imgAttackPlayer.src = "./sprites/ataque-fuego.png";
-        }
-        if(attackType == "Plant"){
-            imgAttackPlayer.src = "./sprites/ataque-hoja.png";
-        }
-        if(attackType == "Water"){
-            imgAttackPlayer.src = "./sprites/ataque-agua.png";
-        }
-        if(attackType == "Normal"){
-            imgAttackPlayer.src = "./sprites/ataque-normal.png";
-        }
-        document.getElementById("imgAttackPlayer").animate([
+    var imgAttack = document.getElementById(eventAttack);
+    imgAttack.className = attackClass;
+    
+    switch (attackType) {
+        case "Fire":
+            imgAttack.src = "./sprites/ataque-fuego.png";
+            break;
+
+        case "Plant":
+            imgAttack.src = "./sprites/ataque-hoja.png";
+            break;
+
+        case "Water":
+            imgAttack.src = "./sprites/ataque-agua.png";
+            break;
+
+        default:
+            imgAttack.src = "./sprites/ataque-normal.png";
+            break;
+    }
+
+    if (eventAttack == "imgAttackPlayer"){
+        document.getElementById(eventAttack).animate([
             // keyframes
 
             { transform: 'translateX(0px) translateY(0px)  rotateY(180deg)' }, 
-            { transform: 'translateX(200px) translateY(-10px)  rotateY(180deg)' },
+            { transform: 'translateX(200px) translateY(0px)  rotateY(180deg)' },
 
 
                 ], 
@@ -53,15 +60,59 @@ function attackImgEvent(attackType){
                         // timing options
                         duration: 500,
                         iterations: 1
-        });
+        }); 
+    }
+    else{
+        document.getElementById(eventAttack).animate([
+            // keyframes
 
-       
-      
+            { transform: 'translateX(0px) translateY(0px)  rotateY(180deg)' }, 
+            { transform: 'translateX(-200px) translateY(0px)  rotateY(180deg)' },
+
+
+                ], 
+                    { 
+                        // timing options
+                        duration: 500,
+                        iterations: 1
+        }); 
+
+    }
         
         
 }
 
 //Funcion que asigna el nombre segun el tipo de ataque 
+
+function switchImgAttack (){
+
+    var imgAttackPlayer = document.getElementById(eventAttack);
+    imgAttackPlayer.className = attackClass;
+    
+    switch (attackType) {
+        case "Fire":
+            imgAttackPlayer.src = "./sprites/ataque-fuego.png";
+            break;
+
+        case "Plant":
+            imgAttackPlayer.src = "./sprites/ataque-hoja.png";
+            break;
+
+        case "Water":
+            imgAttackPlayer.src = "./sprites/ataque-agua.png";
+            break;
+
+        default:
+            imgAttackPlayer.src = "./sprites/ataque-normal.png";
+            break;
+    }
+
+}
+
+
+
+
+
 
 function nameAttack (attack,key){
     $("#btnName"+ (key)).text(attack.name);
@@ -111,6 +162,7 @@ function asignarAtaque(){
             playerAttack(index);
             
             setTimeout(enemyAttack,600);
+
 
         });
     });
